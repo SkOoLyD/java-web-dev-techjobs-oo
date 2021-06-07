@@ -1,5 +1,6 @@
 package org.launchcode.techjobs_oo;
 
+import java.lang.reflect.Field;
 import java.util.Objects;
 
 public class Job {
@@ -30,6 +31,49 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
+
+    public Job(int id, String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+        this.id = id;
+        this.name = name;
+        this.employer = employer;
+        this.location = location;
+        this.positionType = positionType;
+        this.coreCompetency = coreCompetency;
+    }
+    @Override
+
+    public String toString() {
+
+        String[] labels = {"id:", "name:", "employer:", "location:", "position type:", "core competency:"};
+        Field[] fields = Job.class.getDeclaredFields();
+        String unavailable = "data not available";
+        String message = "\n";
+        int index = 0;
+
+        for (Field f : fields) {
+            if (f.getName() == "nextId") {
+
+            } else {
+
+                try {
+                    if (f.get(this) == null) {
+                        message = message + labels[index] + unavailable + "\n";
+                    } else {
+                        message = message + labels[index] + f.get(this) + "\n";
+                    }
+                    index++;
+
+                } catch (Exception e) {
+                    message = message + labels[index] + unavailable + "\n";
+                    index++;
+                }
+            }
+        }
+        return message;
+    }
+
+
+
 
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
@@ -86,15 +130,5 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    @Override
-    public String toString() {
-        return "Job{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", employer=" + employer +
-                ", location=" + location +
-                ", positionType=" + positionType +
-                ", coreCompetency=" + coreCompetency +
-                '}';
-    }
+
 }
