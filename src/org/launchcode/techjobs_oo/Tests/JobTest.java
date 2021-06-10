@@ -84,7 +84,7 @@ public class JobTest {
         assertTrue(lines[1].startsWith("name:"));
         assertTrue(lines[2].startsWith("employer:"));
         assertTrue(lines[3].startsWith("location:"));
-        assertTrue(lines[4].startsWith("position type:"));
+        assertTrue(lines[4].startsWith("positionType:"));
         assertTrue(lines[5].startsWith("core competency"));
 
         assertTrue(lines[0].endsWith(Integer.toString(testJob.getId())));

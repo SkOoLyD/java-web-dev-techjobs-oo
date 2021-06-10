@@ -44,7 +44,7 @@ public class Job {
 
     public String toString() {
 
-        String[] labels = {"id:", "name:", "employer:", "location:", "position type:", "core competency:"};
+        String[] labels = {"id:", "name:", "employer:", "location:", "positionType:", "core competency:"};
         Field[] fields = Job.class.getDeclaredFields();
         String unavailable = "data not available";
         String message = "\n";
