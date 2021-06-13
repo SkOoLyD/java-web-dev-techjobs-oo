@@ -51,7 +51,7 @@ public class Job {
         int index = 0;
 
         for (Field f : fields) {
-            if (f.getName() == "nextId") {
+            if (f.getName().equals("nextId")) {
 
             } else {
 
