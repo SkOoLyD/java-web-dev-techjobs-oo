@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 public class JobTest {
+
+    private Object String;
 
     @Before
     public void createJobObjects() {
@@ -97,7 +97,7 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringDataUnavailable() {
+    public Object testToStringDataUnavailable() {
         Job testJob = new Job();
 
         String[] lines = testJob.toString().trim().split("\n");
@@ -108,8 +108,8 @@ public class JobTest {
         list.remove(0);
         lines = list.toArray(new String[0]);
 
-        String unavailable = "data not available";
-        System.out.println(unavailable);
+        String = "data not available";
+        return String ;
         }
     }
 
