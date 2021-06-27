@@ -3,9 +3,9 @@ package org.launchcode.techjobs_oo;
 import java.util.Objects;
 
 public abstract class JobField {
-    protected int id;
-    protected static int nextId = 1;
-    protected String value;
+    private int id;
+    private static int nextId = 1;
+    private String value;
 
     public JobField() {
         id = nextId;
