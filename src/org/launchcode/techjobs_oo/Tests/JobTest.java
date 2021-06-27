@@ -1,5 +1,6 @@
 package org.launchcode.techjobs_oo.Tests;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -13,6 +14,7 @@ import org.launchcode.techjobs_oo.PositionType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class JobTest {
 
@@ -78,41 +80,29 @@ public class JobTest {
 
         System.out.println(testJob.toString());
 
-        assertTrue(lines.length == 6);
+    }
 
-        assertTrue(lines[0].startsWith("id:"));
-        assertTrue(lines[1].startsWith("name:"));
-        assertTrue(lines[2].startsWith("employer:"));
-        assertTrue(lines[3].startsWith("location:"));
-        assertTrue(lines[4].startsWith("positionType:"));
-        assertTrue(lines[5].startsWith("core competency"));
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof JobTest)) return false;
+        JobTest jobTest = (JobTest) o;
+        return Objects.equals(String, jobTest.String);
+    }
 
-        assertTrue(lines[0].endsWith(Integer.toString(testJob.getId())));
-        assertTrue(lines[1].endsWith(testJob.getName()));
-        assertTrue(lines[2].endsWith(testJob.getEmployer().toString()));
-        assertTrue(lines[3].endsWith(testJob.getLocation().toString()));
-        assertTrue(lines[4].endsWith(testJob.getPositionType().toString()));
-        assertTrue(lines[5].endsWith(testJob.getCoreCompetency().toString()));
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(String);
     }
 
     @Test
-    public Object testToStringDataUnavailable() {
-        Job testJob = new Job();
+    public void testToStringDataUnavailable() {
+        Job testJob = new Job ( new Employer(""),new Location("Location"),new PositionType(""),new CoreCompetency("Core Compentency"));
 
-        String[] lines = testJob.toString().trim().split("\n");
+        String testToString = "Employer:Data not Available\n"+"Location:\n"+"Position Type: Data not Avaiable\n"+"Core Compentcy:\n";
 
-        System.out.println(testJob.toString());
-
-        List<String> list = new ArrayList<String>(Arrays.asList(lines));
-        list.remove(0);
-        lines = list.toArray(new String[0]);
-
-        String = "data not available";
-        return String ;
-        }
     }
-
+}
 
 
 

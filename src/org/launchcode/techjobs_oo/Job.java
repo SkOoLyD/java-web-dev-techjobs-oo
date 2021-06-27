@@ -19,11 +19,11 @@ public class Job {
     //  the 'id' field.
 
     public Job() {
-        id= nextId;
+        id = nextId;
         nextId++;
     }
 
-    public Job(String name,Employer employer,Location location,PositionType positionType,CoreCompetency coreCompetency){
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
         this.name = name;
         this.employer = employer;
@@ -32,60 +32,44 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    public Job(int id, String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
-        this.id = id;
-        this.name = name;
+    public Job(Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
-    @Override
-
-    public String toString() {
-
-        String[] labels = {"id:", "name:", "employer:", "location:", "positionType:", "core competency:"};
-        Field[] fields = Job.class.getDeclaredFields();
-        String unavailable = "data not available";
-        String message = "\n";
-        int index = 0;
-
-        for (Field f : fields) {
-            if (f.getName().equals("nextId")) {
-
-            } else {
-
-                try {
-                    if (f.get(this) == null) {
-                        message = message + labels[index] + unavailable + "\n";
-                    } else {
-                        message = message + labels[index] + f.get(this) + "\n";
-                    }
-                    index++;
-
-                } catch (Exception e) {
-                    message = message + labels[index] + unavailable + "\n";
-                    index++;
-                }
-            }
-        }
-        return message;
-    }
-
-
-
-
-
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Job)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return id == job.id && Objects.equals(name, job.name) && Objects.equals(employer, job.employer) && Objects.equals(location, job.location) && Objects.equals(positionType, job.positionType) && Objects.equals(coreCompetency, job.coreCompetency);
+        return id == job.id;
     }
+
+    public String ToString() {
+
+        if (name.equals("")) {
+            name = "Data not Available";
+        }
+        if (employer.getValue().equals("") || employer.getValue() == null) {
+            employer.setValue("Data Not Available");
+        }
+        if (location.getValue().equals("") || location.getValue() == null) {
+            location.setValue("Data Not Available");
+        }
+        if (positionType.getValue().equals("") || positionType.getValue() == null) {
+            positionType.setValue("Data Not Available");
+        }
+        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null) {
+            coreCompetency.setValue("Data Not Available");
+        }
+        if (name.equals(""))
+
+        return name ;
+        return null;
+    }
+
 
     @Override
     public int hashCode() {
