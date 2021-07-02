@@ -1,6 +1,5 @@
 package org.launchcode.techjobs_oo;
 
-import java.lang.reflect.Field;
 import java.util.Objects;
 
 public class Job {
@@ -47,29 +46,55 @@ public class Job {
         return id == job.id;
     }
 
-    public String ToString() {
+    @Override
+    public String toString() {
+        String nameOutput;
+        String employerOutput;
+        String locationOutput;
+        String positionTypeOutput;
+        String coreCompetencyOutput;
 
         if (name.equals("")) {
-            name = "Data not Available";
+            nameOutput="Data not available";
         }
-        if (employer.getValue().equals("") || employer.getValue() == null) {
-            employer.setValue("Data Not Available");
+        else {
+            nameOutput = this.getName();
         }
-        if (location.getValue().equals("") || location.getValue() == null) {
-            location.setValue("Data Not Available");
+        if (employer.getValue().equals("")) {
+            employerOutput="Data not available";
         }
-        if (positionType.getValue().equals("") || positionType.getValue() == null) {
-            positionType.setValue("Data Not Available");
+        else {
+            employerOutput = employer.getValue();
         }
-        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null) {
-            coreCompetency.setValue("Data Not Available");
+        if (location.getValue().equals("")){
+            locationOutput="Data not available";
         }
-        if (name.equals(""))
+        else {
+            locationOutput= location.getValue();
+        }
+        if(positionType.getValue().equals("")) {
+            positionTypeOutput=" Data not available";
+        }
+        else {
+            positionTypeOutput= positionType.getValue();
+        }
+        if(coreCompetency.getValue().equals("")) {
+            coreCompetencyOutput="Data not available";
+        }
+        else {
+            coreCompetencyOutput= coreCompetency.getValue();
+        }
 
-        return name ;
-        return null;
+
+        return
+                "Id:" + id +"\n"+
+                " Name:" + nameOutput + "\n" +
+                " Employer:" + employerOutput + "\n" +
+                " Location:" + locationOutput + "\n" +
+                " positionType:" + positionType + "\n" +
+                " coreCompetency:" + coreCompetency + "\n"
+                ;
     }
-
 
     @Override
     public int hashCode() {

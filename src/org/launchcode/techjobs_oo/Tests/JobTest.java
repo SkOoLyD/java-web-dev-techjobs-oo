@@ -82,25 +82,15 @@ public class JobTest {
 
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof JobTest)) return false;
-        JobTest jobTest = (JobTest) o;
-        return Objects.equals(String, jobTest.String);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(String);
-    }
 
     @Test
     public void testToStringDataUnavailable() {
-        Job testJob = new Job ( new Employer(""),new Location("Location"),new PositionType(""),new CoreCompetency("Core Compentency"));
+
+        Job testJob = new Job ("Name", new Employer(""),new Location("Location"),new PositionType(""),new CoreCompetency("Core Compentency"));
 
         String testToString = "Employer:Data not Available\n"+"Location:\n"+"Position Type: Data not Avaiable\n"+"Core Compentcy:\n";
-
+        System.out.println(testJob.toString());
     }
 }
 
