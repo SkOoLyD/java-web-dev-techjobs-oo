@@ -31,12 +31,7 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    public Job(Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
-        this.employer = employer;
-        this.location = location;
-        this.positionType = positionType;
-        this.coreCompetency = coreCompetency;
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -87,7 +82,7 @@ public class Job {
 
 
         return
-                "Id:" + id +"\n"+
+                "\nId:" + id +"\n"+
                 " Name:" + nameOutput + "\n" +
                 " Employer:" + employerOutput + "\n" +
                 " Location:" + locationOutput + "\n" +
